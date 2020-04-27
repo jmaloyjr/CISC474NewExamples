@@ -12,7 +12,7 @@ class Application extends NodeApplication {
     
     //Notify that server is running
     OnSetupComplete(port: number): void {
-        console.log('ExampleApi Listening on port ' + port.toString());
+        console.log('covid19backend Listening on port ' + port.toString());
     }
 
     //setup main routing for the application
