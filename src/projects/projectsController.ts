@@ -22,7 +22,6 @@ export class ProjectsController {
                 res.send(JSON.parse(page));
             });
         });
-
     }
     
     getStateData(req: express.Request, res: express.Response) {
