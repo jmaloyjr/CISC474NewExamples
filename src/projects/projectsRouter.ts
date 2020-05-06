@@ -11,5 +11,6 @@ export class ProjectsRouter extends AppRouter{
     setupRoutes(): void {      
         this.expressRouter.get('/covid-data',ProjectsRouter.projController.getCovidData);
         this.expressRouter.get('/covid-data/:state', ProjectsRouter.projController.getStateData);
+        this.expressRouter.get('/recent-date', ProjectsRouter.projController.getLastDataDate);
     }    
 }

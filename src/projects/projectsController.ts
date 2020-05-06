@@ -41,4 +41,24 @@ export class ProjectsController {
         });
     }
 
+    getLastDataDate(req: express.Request, res: express.Response) {
+        var http = require('follow-redirects').http;
+        var opts = { host: 'energ.ee', path: '/covid19-us-api/states.json' };
+        http.get(opts, (apires: express.Response) => {
+            var page = '';
+            //var json = null;
+            apires.on('data', (chunk) => {
+                page += chunk;
+            });
+            apires.on('end', function () {
+                var js = JSON.parse(page);
+                var singleState = js["Alabama"];
+                var lastDay = singleState[singleState.length-1];
+                var lastDate = lastDay["date"];
+                var j = '{"date": "' + lastDate + '"}';
+                res.send(JSON.parse(j));
+            });
+        });
+    }
+
 }
